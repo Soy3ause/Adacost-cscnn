@@ -1,3 +1,5 @@
+__author__ = '曹申'
+__edit_time__ = '2024.12.06'
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import StratifiedKFold
 from sklearn.metrics import (

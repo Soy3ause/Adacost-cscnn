@@ -1,3 +1,5 @@
+__author__ = '杨敬坤'
+__edit_time__ = '2024.12.06'
 import numpy as np
 import pandas as pd
 import os, re, time, math, tqdm, itertools

@@ -1,3 +1,5 @@
+__author__ = '田宇航'
+__edit_time__ = '2024.12.06'
 import pandas as pd
 from sklearn.model_selection import KFold, cross_val_score, cross_val_predict
 from sklearn.ensemble import RandomForestClassifier
