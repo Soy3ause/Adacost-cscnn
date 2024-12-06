@@ -2,6 +2,7 @@
 
 利用conda创建虚拟环境方法：
 1、win+R并输入cmd打开命令行
+
 2、创建新的虚拟环境：conda create -n demo python=3.10.8
 其中-n 后面跟的是环境名字，这里是demo，python后面是版本号
 3、激活新环境：conda activate demo
