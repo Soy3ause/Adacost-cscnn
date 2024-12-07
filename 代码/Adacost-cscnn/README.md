@@ -1,4 +1,6 @@
-运行Adacost-cnn.py即可
+二分类运行Adacost-cnn-binary.py
+
+多分类运行Adacost-cnn-multi.py
 
 代码中有两个参数需要根据数据集手动进行调整
 
