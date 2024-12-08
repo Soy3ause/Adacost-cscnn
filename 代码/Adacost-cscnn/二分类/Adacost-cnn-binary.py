@@ -72,7 +72,7 @@ kf = KFold(n_splits=10, shuffle=True, random_state=42)
 import numpy
 import tensorflow
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, Input
+from keras.layers import Dense, Dropout, Flatten, Input, BatchNormalization
 from keras.layers import Activation
 from keras.layers import MaxPooling1D,Conv1D,UpSampling1D
 from keras.models import Model
@@ -173,24 +173,39 @@ def baseline_model(n_features=10, seed=100):
     # set_random_seed(seed)
     tensorflow.random.set_seed(seed)
 	# create model
-    model = Sequential()
-    model.add(Conv1D(32, 3, padding = "same", input_shape=(n_features, 1)))
-    model.add(Activation('relu'))
-    model.add(MaxPooling1D(pool_size=2))
-    model.add(Dropout(0.2))
+    '''
+        model = Sequential()
+        model.add(Conv1D(32, 3, padding = "same", input_shape=(n_features, 1)))
+        model.add(Activation('relu'))
+        model.add(MaxPooling1D(pool_size=2))
+        model.add(Dropout(0.2))
 
-#    model.add(Conv1D(32, 3, border_mode='valid',  activation='relu'))
-#    model.add(MaxPooling1D(pool_size=(2, 2)))
-#    model.add(Dropout(0.2))#
+    #    model.add(Conv1D(32, 3, border_mode='valid',  activation='relu'))
+    #    model.add(MaxPooling1D(pool_size=(2, 2)))
+    #    model.add(Dropout(0.2))#
 
-    model.add(Flatten())
-    model.add(Dense(128, activation='relu'))
+        model.add(Flatten())
+        model.add(Dense(128, activation='relu'))
 
-    model.add(Dropout(0.2))#
-    model.add(Dense(64, activation='relu'))#
+        model.add(Dropout(0.2))#
+        model.add(Dense(64, activation='relu'))#
 
-    model.add(Dense(n_classes))
-    model.add(Activation('softmax'))
+        model.add(Dense(n_classes))
+        model.add(Activation('softmax'))
+        '''
+    model = Sequential([
+        Conv1D(32, kernel_size=4, strides=3, activation='relu', input_shape=(n_features, 1)),
+        BatchNormalization(),
+        Conv1D(32, kernel_size=5, strides=1, activation='relu'),
+        BatchNormalization(),
+        MaxPooling1D(pool_size=2, strides=2),
+        Flatten(),
+        Dense(200, activation='relu'),
+        Dropout(0.05),
+        Dense(100, activation='relu'),
+        Dropout(0.05),
+        Dense(n_classes, activation='softmax'),
+    ])
 	# Compile model
     numpy.random.seed(seed)
     # set_random_seed(seed)
