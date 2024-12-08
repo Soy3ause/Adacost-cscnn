@@ -66,7 +66,7 @@ df = pd.read_csv('15name.csv') #这里改数据集
 
 X = df.iloc[:, :-1]
 y = df.iloc[:, -1]
-kf = KFold(n_splits=3, shuffle=True, random_state=42)
+kf = KFold(n_splits=10, shuffle=True, random_state=42)
 
 #adaboostcnn多分类
 import numpy
