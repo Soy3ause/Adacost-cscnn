@@ -80,7 +80,7 @@ def custom_weighted_binary_crossentropy(y_true, y_pred, fn_weight=1.0, tp_weight
 
     return K.mean(weighted_loss)
 
-file_path=("D:\\2.作业\\5.创新实践综合\\11.28\\CIC_IDS_2017_binary_preprocessed.csv")
+file_path=("E:/develop/Adacost-cscnn/代码/cnn/代价敏感/vpnall.csv")
 df = pd.read_csv(file_path, low_memory=False)
 df=df.fillna(0)#缺失值补零
 
@@ -118,7 +118,7 @@ model = tf.keras.Sequential([
 ])
 
 model.compile(loss=lambda y_true, y_pred: custom_weighted_binary_crossentropy(y_true, y_pred,
-                                                                              fn_weight=1, fp_weight=1200), optimizer='adagrad', metrics=['accuracy'])
+                                                                              fn_weight=1, fp_weight=900), optimizer='adagrad', metrics=['accuracy'])
 
 print(num_classes)
 if num_classes <=2:

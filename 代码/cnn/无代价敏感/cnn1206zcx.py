@@ -60,7 +60,7 @@ def FOLDduo(y_true, y_pred,fold_no):
     print(f"折 {fold_no} 的 召回率加权平均", recall_weighted[fold_no])
 
 
-file_path=("E:/cnn/kddcup.data_10_percent_corrected_Binary.csv")
+file_path=("E:/develop/Adacost-cscnn/代码/cnn/无代价敏感/vpnall.csv")
 df = pd.read_csv(file_path, low_memory=False)
 df=df.fillna(0)#缺失值补零
 
